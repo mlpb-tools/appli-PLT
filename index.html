@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PLT 2026 - Mon Tableau de Bord</title>
+    
+    <!-- Polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        header: ['Fredoka', 'sans-serif'],
+                        body: ['Nunito', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#1a1a1a',
+                        cyanAccent: '#12b4c8',
+                        yellowAccent: '#ffb703',
+                        purpleAccent: '#d946ef',
+                        greenAccent: '#95c11f',
+                        redAccent: '#ef4444',
+                        ls4you: '#a3195b'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+        
+        .neo-card {
+            background: white;
+            border: 3px solid #1a1a1a;
+            box-shadow: 4px 4px 0px 0px #1a1a1a;
+            border-radius: 12px;
+        }
+        
+        .neo-btn-active {
+            background: #12b4c8 !important;
+            box-shadow: none !important;
+            transform: translate(2px, 2px);
+        }
+
+        .neo-btn-active span, .neo-btn-active i {
+            color: #1a1a1a !important;
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        .active-press:active {
+            transform: translate(2px, 2px);
+            box-shadow: none !important;
+        }
+
+        /* Menu Overlay */
+        #menu-overlay {
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        #menu-overlay.open {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .nav-btn span {
+            font-size: 10px;
+            font-weight: 800;
+        }
+    </style>
+</head>
+<body class="bg-[#f0f2f5] font-body text-darkBg pb-28">
+
+    <!-- Header Fixe -->
+    <header class="sticky top-0 z-40 bg-darkBg text-white border-b-4 border-black p-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="bg-yellowAccent w-10 h-10 rounded-full border-2 border-black flex items-center justify-center shadow-[2px_2px_0px_0px_white]">
+                <i class="fa-solid fa-person-walking text-black"></i>
+            </div>
+            <div>
+                <h1 class="font-header font-bold text-lg leading-none uppercase tracking-tight">PLT 2026</h1>
+                <p class="text-[9px] uppercase font-black text-cyanAccent tracking-widest">Mon Carnet de Bord</p>
+            </div>
+        </div>
+        <img src="https://static.wixstatic.com/media/dd5dab_47743b1c86024865ba19e623a3db327f~mv2.avif/v1/fill/w_112,h_30,al_c,q_80,enc_avif,quality_auto/dd5dab_47743b1c86024865ba19e623a3db327f~mv2.avif" alt="MLPB" class="h-6 object-contain opacity-80">
+    </header>
+
+    <main class="p-4 max-w-lg mx-auto min-h-[70vh]">
+        
+        <!-- SECTION 0 : ACCUEIL -->
+        <section id="tab-accueil" class="tab-content active space-y-6 pt-2">
+            <div class="flex flex-col items-center text-center space-y-4">
+                <h2 class="font-header font-bold text-3xl uppercase leading-none text-darkBg mt-4">
+                    Bienvenue dans l'aventure !
+                </h2>
+                <div class="inline-block bg-yellowAccent px-6 py-2 border-4 border-black font-black text-sm uppercase shadow-[4px_4px_0px_0px_black]">
+                    Du 16 au 31 mars 2026
+                </div>
+            </div>
+
+            <div class="neo-card p-6 bg-white border-l-[12px] border-l-cyanAccent">
+                <p class="text-base font-bold leading-relaxed text-slate-800">
+                    Prépare-toi à vivre <span class="text-cyanAccent font-black underline decoration-2 underline-offset-4">8 jours d'exploration</span> du Pays Basque. Entre rencontres professionnelles et défis collectifs, ton carnet de bord sera ton meilleur allié.
+                </p>
+            </div>
+
+            <div class="pt-4">
+                <button onclick="switchTab('programme')" class="w-full bg-darkBg text-white font-black py-5 rounded-2xl border-4 border-black shadow-[6px_6px_0px_0px_#12b4c8] active-press transition-all uppercase tracking-widest text-lg flex items-center justify-center gap-3">
+                    C'est parti <i class="fa-solid fa-bolt"></i>
+                </button>
+            </div>
+        </section>
+        
+        <!-- SECTION 1 : PROGRAMME -->
+        <section id="tab-programme" class="tab-content space-y-6">
+            <div class="flex items-center gap-2 mb-2">
+                <i class="fa-solid fa-calendar-week text-darkBg text-xl"></i>
+                <h2 class="font-header font-bold text-2xl uppercase tracking-tight tracking-tighter">Ton Agenda</h2>
+            </div>
+
+            <div class="relative ml-4 pl-6 border-l-4 border-black space-y-8">
+                <div class="relative">
+                    <div class="absolute -left-[34px] top-1 w-6 h-6 bg-yellowAccent border-2 border-black rounded-full shadow-[2px_2px_0px_0px_black] flex items-center justify-center text-[10px] font-black tracking-tight">16</div>
+                    <div class="neo-card p-4">
+                        <p class="text-[10px] font-black text-gray-400 uppercase mb-1">Itxassou</p>
+                        <h3 class="font-header font-bold text-lg leading-tight uppercase tracking-tight">Lancement du projet</h3>
+                        <p class="text-xs text-gray-600 mt-2 italic font-bold">Escape Game & Formation des groupes</p>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute -left-[34px] top-1 w-6 h-6 bg-cyanAccent border-2 border-black rounded-full shadow-[2px_2px_0px_0px_black] flex items-center justify-center text-[10px] font-black text-white tracking-tight">17</div>
+                    <div class="neo-card p-4 border-l-[12px] border-l-cyanAccent">
+                        <p class="text-[10px] font-black text-gray-400 uppercase mb-1">Ton Secteur</p>
+                        <h3 class="font-header font-bold text-lg leading-tight uppercase tracking-tight">Ateliers préparation</h3>
+                        <button onclick="switchTab('roles')" class="mt-3 text-[11px] font-black uppercase text-cyanAccent underline decoration-2 underline-offset-4 font-bold italic">Choisis ton rôle →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION CARTE -->
+        <section id="tab-carte" class="tab-content">
+            <div class="neo-card p-8 text-center space-y-8">
+                <div class="w-24 h-24 bg-cyanAccent/10 rounded-full flex items-center justify-center mx-auto border-4 border-black border-dashed">
+                    <i class="fa-solid fa-map-location-dot text-5xl text-cyanAccent"></i>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="font-header font-bold text-2xl uppercase tracking-tight leading-none">Carte Interactive</h3>
+                    <p class="text-xs font-bold text-gray-500">Ouvre ton itinéraire complet et les points de rendez-vous GPS.</p>
+                </div>
+                <a href="https://mlpb-tools.github.io/Carte-Parcours-Les-Terrtoires/" target="_blank" class="block w-full bg-cyanAccent text-white font-black py-5 rounded-2xl border-4 border-black shadow-[6px_6px_0px_0px_black] uppercase tracking-widest text-lg text-center active-press">
+                    Ouvrir la Carte
+                </a>
+            </div>
+        </section>
+
+        <!-- SECTION ENQUÊTE -->
+        <section id="tab-enquete" class="tab-content">
+            <div class="neo-card p-8 text-center space-y-8">
+                <div class="w-24 h-24 bg-yellowAccent/10 rounded-full flex items-center justify-center mx-auto border-4 border-black border-dashed">
+                    <i class="fa-solid fa-clipboard-list text-5xl text-yellowAccent"></i>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="font-header font-bold text-2xl uppercase tracking-tight leading-none">Enquête Métier</h3>
+                    <p class="text-xs font-bold text-gray-500">Prépare tes questions et note tes impressions terrain.</p>
+                </div>
+                <a href="https://mlpb-tools.github.io/enquete-m-tier-MLPB/" target="_blank" class="block w-full bg-yellowAccent text-black font-black py-5 rounded-2xl border-4 border-black shadow-[6px_6px_0px_0px_black] uppercase tracking-widest text-lg text-center active-press">
+                    Lancer l'outil
+                </a>
+            </div>
+        </section>
+
+        <!-- SECTIONS SECONDAIRES (ACTIVITES, ROLES, CONTACTS) -->
+        <section id="tab-activites" class="tab-content space-y-4">
+            <h2 class="font-header font-bold text-2xl uppercase">Détail des Activités</h2>
+            <div class="neo-card p-4 border-l-8 border-ls4you">
+                <h4 class="font-black text-xs uppercase tracking-widest text-ls4you mb-2">LS4YOU</h4>
+                <p class="font-bold text-sm leading-tight uppercase">Image de soi & Posture</p>
+                <p class="text-xs text-gray-600 mt-2 italic font-bold leading-snug">Identification des forces et des codes de l'entreprise pour préparer tes immersions.</p>
+            </div>
+        </section>
+
+        <section id="tab-roles" class="tab-content space-y-4">
+            <h2 class="font-header font-bold text-2xl uppercase tracking-tight">Rôles de groupe</h2>
+            <div class="grid grid-cols-1 gap-4">
+                <div class="neo-card p-4 border-l-8 border-yellowAccent">
+                    <h4 class="font-black text-sm uppercase flex items-center gap-2"><i class="fa-solid fa-camera"></i> Reporter Image</h4>
+                    <p class="text-[11px] font-bold text-gray-500 mt-1 uppercase tracking-tight">Captation visuelle (photos/vidéos) et portraits des lieux.</p>
+                </div>
+                <div class="neo-card p-4 border-l-8 border-purpleAccent">
+                    <h4 class="font-black text-sm uppercase flex items-center gap-2"><i class="fa-solid fa-microphone"></i> Reporter Parole</h4>
+                    <p class="text-[11px] font-bold text-gray-500 mt-1 uppercase tracking-tight">Interviews des professionnels et prise de notes citations.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-contacts" class="tab-content space-y-6">
+            <h2 class="font-header font-bold text-2xl uppercase tracking-tight">Besoin d'aide ?</h2>
+            <p class="text-xs font-bold text-gray-500 bg-white p-3 rounded-lg border-2 border-black border-dashed leading-tight">
+                Note ici le numéro de ton référent pour le joindre rapidement.
+            </p>
+            <div id="contacts-list" class="grid grid-cols-1 gap-4"></div>
+        </section>
+
+    </main>
+
+    <!-- MENU "PLUS" OVERLAY -->
+    <div id="menu-overlay" class="fixed inset-0 z-30 bg-darkBg/95 flex flex-col items-center justify-center p-8">
+        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white text-3xl active-press">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="grid grid-cols-1 gap-6 w-full max-w-xs">
+            <button onclick="switchTab('activites'); toggleMenu()" class="w-full bg-ls4you text-white font-black py-4 rounded-xl border-4 border-white shadow-[4px_4px_0px_0px_white] uppercase text-sm flex items-center gap-3 justify-center">
+                <i class="fa-solid fa-rocket"></i> Activités
+            </button>
+            <button onclick="switchTab('roles'); toggleMenu()" class="w-full bg-purpleAccent text-white font-black py-4 rounded-xl border-4 border-white shadow-[4px_4px_0px_0px_white] uppercase text-sm flex items-center gap-3 justify-center">
+                <i class="fa-solid fa-users-gear"></i> Rôles Groupe
+            </button>
+            <button onclick="switchTab('contacts'); toggleMenu()" class="w-full bg-redAccent text-white font-black py-4 rounded-xl border-4 border-white shadow-[4px_4px_0px_0px_white] uppercase text-sm flex items-center gap-3 justify-center">
+                <i class="fa-solid fa-phone"></i> Contacts Aide
+            </button>
+        </div>
+    </div>
+
+    <!-- Navigation TabBar (Optimisée 5 boutons) -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-darkBg border-t-4 border-black z-40 flex justify-around p-2 pb-6">
+        <button onclick="switchTab('accueil')" id="btn-accueil" class="nav-btn flex-1 flex flex-col items-center gap-1 text-white py-2 transition-all">
+            <i class="fa-solid fa-house"></i>
+            <span class="uppercase tracking-tighter">Accueil</span>
+        </button>
+        <button onclick="switchTab('programme')" id="btn-programme" class="nav-btn flex-1 flex flex-col items-center gap-1 text-white py-2 transition-all">
+            <i class="fa-solid fa-calendar-alt"></i>
+            <span class="uppercase tracking-tighter">Agenda</span>
+        </button>
+        <button onclick="switchTab('carte')" id="btn-carte" class="nav-btn flex-1 flex flex-col items-center gap-1 text-white py-2 transition-all">
+            <i class="fa-solid fa-map"></i>
+            <span class="uppercase tracking-tighter">Carte</span>
+        </button>
+        <button onclick="switchTab('enquete')" id="btn-enquete" class="nav-btn flex-1 flex flex-col items-center gap-1 text-white py-2 transition-all">
+            <i class="fa-solid fa-edit"></i>
+            <span class="uppercase tracking-tighter">Enquête</span>
+        </button>
+        <button onclick="toggleMenu()" class="nav-btn flex-1 flex flex-col items-center gap-1 text-yellowAccent py-2 transition-all">
+            <i class="fa-solid fa-plus-circle"></i>
+            <span class="uppercase tracking-tighter">Plus</span>
+        </button>
+    </nav>
+
+    <script>
+        const contactsData = [
+            { id: 'garazi', label: 'GARAZI', names: 'M-Andrée M.', color: 'yellowAccent', border: 'border-l-yellowAccent' },
+            { id: 'amikuze', label: 'AMIKUZE', names: 'Alain I. & Patricia G.', color: 'cyanAccent', border: 'border-l-cyanAccent' },
+            { id: 'hasparren', label: 'HASPARREN', names: 'Mathieu B. & Amaïa A.', color: 'greenAccent', border: 'border-l-greenAccent' },
+            { id: 'sudpb', label: 'SUD PB', names: 'Amaya V.', color: 'redAccent', border: 'border-l-redAccent' }
+        ];
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('neo-btn-active'));
+            document.getElementById('tab-' + tabId).classList.add('active');
+            const btn = document.getElementById('btn-' + tabId);
+            if (btn) btn.classList.add('neo-btn-active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMenu() {
+            const overlay = document.getElementById('menu-overlay');
+            overlay.classList.toggle('open');
+        }
+
+        function renderContacts() {
+            const container = document.getElementById('contacts-list');
+            const savedPhones = JSON.parse(localStorage.getItem('plt_phones') || '{}');
+
+            container.innerHTML = contactsData.map(c => `
+                <div class="neo-card p-4 border-l-[12px] ${c.border}">
+                    <p class="text-[10px] font-black uppercase text-gray-400 mb-1 leading-none tracking-wider">${c.label}</p>
+                    <h3 class="font-header font-bold text-sm leading-none uppercase">${c.names}</h3>
+                    <div class="mt-3">
+                        <input type="tel" id="phone-${c.id}" value="${savedPhones[c.id] || ''}" placeholder="06..." class="neo-input" oninput="savePhone('${c.id}', this.value)">
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function savePhone(id, value) {
+            const savedPhones = JSON.parse(localStorage.getItem('plt_phones') || '{}');
+            savedPhones[id] = value;
+            localStorage.setItem('plt_phones', JSON.stringify(savedPhones));
+        }
+
+        window.onload = function() {
+            switchTab('accueil');
+            renderContacts();
+        };
+    </script>
+</body>
+</html>
