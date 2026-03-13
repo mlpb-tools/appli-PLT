@@ -65,19 +65,6 @@
             box-shadow: none !important;
         }
 
-        /* Menu Overlay */
-        #menu-overlay {
-            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            pointer-events: none;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        #menu-overlay.open {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-
         .nav-btn span {
             font-size: 10px;
             font-weight: 800;
@@ -150,7 +137,7 @@
             </div>
         </section>
         
-        <!-- SECTION 1 : PROGRAMME COMPLET -->
+        <!-- SECTION 1 : PROGRAMME COMPLET (SIMPLIFIÉ) -->
         <section id="tab-programme" class="tab-content space-y-6">
             <div class="flex items-center gap-2 mb-2">
                 <i class="fa-solid fa-calendar-week text-darkBg text-xl"></i>
@@ -163,8 +150,8 @@
                     <div class="absolute -left-[34px] top-1 w-6 h-6 bg-yellowAccent border-2 border-black rounded-full shadow-[2px_2px_0px_0px_black] flex items-center justify-center text-[10px] font-black">16</div>
                     <div class="neo-card p-4">
                         <p class="text-[10px] font-black text-gray-400 uppercase mb-1">Itxassou</p>
-                        <h3 class="font-header font-bold text-lg leading-tight uppercase">Lancement plénière</h3>
-                        <p class="text-xs text-gray-600 mt-2 font-bold italic">Escape Game & Groupes</p>
+                        <h3 class="font-header font-bold text-lg leading-tight uppercase">Lancement</h3>
+                        <p class="text-xs text-gray-600 mt-2 font-bold italic">Escape Game et rencontre des groupes</p>
                     </div>
                 </div>
 
@@ -172,9 +159,9 @@
                 <div class="relative">
                     <div class="absolute -left-[34px] top-1 w-6 h-6 bg-cyanAccent border-2 border-black rounded-full shadow-[2px_2px_0px_0px_black] flex items-center justify-center text-[10px] font-black text-white">17</div>
                     <div class="neo-card p-4 border-l-[12px] border-l-cyanAccent">
-                        <p class="text-[10px] font-black text-gray-400 uppercase mb-1">Territoires</p>
-                        <h3 class="font-header font-bold text-lg leading-tight uppercase">Ateliers Prépa</h3>
-                        <p class="text-xs text-gray-600 mt-2 font-bold italic underline" onclick="switchTab('roles')">Choix des rôles et organisation</p>
+                        <p class="text-[10px] font-black text-gray-400 uppercase mb-1">Près de chez toi</p>
+                        <h3 class="font-header font-bold text-lg leading-tight uppercase">Ateliers</h3>
+                        <p class="text-xs text-gray-600 mt-2 font-bold italic">Choisir son rôle et préparer la suite</p>
                     </div>
                 </div>
 
@@ -183,18 +170,8 @@
                     <div class="absolute -left-[34px] top-1 w-6 h-6 bg-greenAccent border-2 border-black rounded-full shadow-[2px_2px_0px_0px_black] flex items-center justify-center text-[10px] font-black text-white">19</div>
                     <div class="neo-card p-4">
                         <p class="text-[10px] font-black text-gray-400 uppercase mb-1">Hasparren</p>
-                        <h3 class="font-header font-bold text-lg leading-tight uppercase">Restitution croisée</h3>
-                        <p class="text-xs text-gray-600 mt-2 font-bold italic">Consolidation des récits</p>
-                    </div>
-                </div>
-
-                <!-- J4 -->
-                <div class="relative">
-                    <div class="absolute -left-[34px] top-1 w-6 h-6 bg-ls4you border-2 border-black rounded-full shadow-[2px_2px_0px_0px_black] flex items-center justify-center text-[10px] font-black text-white">23</div>
-                    <div class="neo-card p-4">
-                        <p class="text-[10px] font-black text-gray-400 uppercase mb-1">Territoires</p>
-                        <h3 class="font-header font-bold text-lg leading-tight uppercase">Consolidation</h3>
-                        <p class="text-xs text-gray-600 mt-2 font-bold italic">Préparation finale des visites</p>
+                        <h3 class="font-header font-bold text-lg leading-tight uppercase">Présentation croisée</h3>
+                        <p class="text-xs text-gray-600 mt-2 font-bold italic">Mise en commun de ce qu'on a trouvé</p>
                     </div>
                 </div>
 
@@ -202,9 +179,9 @@
                 <div class="relative">
                     <div class="absolute -left-[34px] top-1 w-6 h-6 bg-purpleAccent border-2 border-black rounded-full shadow-[2px_2px_0px_0px_black] flex items-center justify-center text-[10px] font-black text-white">24</div>
                     <div class="neo-card p-4 border-l-[12px] border-l-purpleAccent">
-                        <p class="text-[10px] font-black text-gray-400 uppercase mb-1">Immersions</p>
-                        <h3 class="font-header font-bold text-lg leading-tight uppercase">Visites de terrain</h3>
-                        <p class="text-xs text-gray-600 mt-2 font-bold italic underline" onclick="switchTab('enquete')">Remplir l'enquête métier</p>
+                        <p class="text-[10px] font-black text-gray-400 uppercase mb-1">En entreprise</p>
+                        <h3 class="font-header font-bold text-lg leading-tight uppercase">Visites sur le terrain</h3>
+                        <p class="text-xs text-gray-600 mt-2 font-bold italic underline" onclick="switchTab('enquete')">Rencontres avec des pros</p>
                     </div>
                 </div>
 
@@ -213,8 +190,8 @@
                     <div class="absolute -left-[34px] top-1 w-6 h-6 bg-redAccent border-2 border-black rounded-full shadow-[2px_2px_0px_0px_black] flex items-center justify-center text-[10px] font-black text-white">30</div>
                     <div class="neo-card p-4">
                         <p class="text-[10px] font-black text-gray-400 uppercase mb-1">Ustaritz</p>
-                        <h3 class="font-header font-bold text-lg leading-tight uppercase">Sprint Restitution</h3>
-                        <p class="text-xs text-gray-600 mt-2 font-bold italic">Finalisation du support de groupe</p>
+                        <h3 class="font-header font-bold text-lg leading-tight uppercase">Préparation du support</h3>
+                        <p class="text-xs text-gray-600 mt-2 font-bold italic">On prépare le support de présentation</p>
                     </div>
                 </div>
 
@@ -223,81 +200,9 @@
                     <div class="absolute -left-[34px] top-1 w-6 h-6 bg-darkBg border-2 border-black rounded-full shadow-[2px_2px_0px_0px_white] flex items-center justify-center text-[10px] font-black text-white">31</div>
                     <div class="neo-card p-4 bg-darkBg text-white border-white">
                         <p class="text-[10px] font-black text-cyanAccent uppercase mb-1">Hasparren</p>
-                        <h3 class="font-header font-bold text-lg leading-tight uppercase">Restitution finale</h3>
-                        <p class="text-xs text-gray-300 mt-2 font-bold italic">Présentation en public</p>
+                        <h3 class="font-header font-bold text-lg leading-tight uppercase">Présentation et conclusion</h3>
+                        <p class="text-xs text-gray-300 mt-2 font-bold italic">Retour d'expérience en public</p>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION ACTIVITÉS (RESTAURÉE) -->
-        <section id="tab-activites" class="tab-content space-y-6">
-            <div class="flex items-center gap-2 mb-4">
-                <i class="fa-solid fa-rocket text-ls4you text-xl"></i>
-                <h2 class="font-header font-bold text-2xl uppercase tracking-tight text-darkBg">Tes Activités</h2>
-            </div>
-
-            <div class="space-y-4">
-                <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest border-l-4 border-cyanAccent pl-2">Phase 1 : Immersion</p>
-                <!-- Act 1 -->
-                <div class="neo-card p-4 border-l-8 border-cyanAccent">
-                    <h3 class="font-header font-bold text-lg leading-none uppercase">Trouve ta place</h3>
-                    <p class="text-xs font-bold text-gray-500 mt-1 uppercase italic">Exploration locale</p>
-                    <p class="text-xs text-gray-600 mt-3 font-bold leading-tight">Cartographie des lieux et identification du réseau de soutien local pour ton ancrage.</p>
-                </div>
-                <!-- Act 2 -->
-                <div class="neo-card p-4 border-l-8 border-ls4you">
-                    <div class="flex items-center justify-between mb-1">
-                        <h3 class="font-header font-bold text-lg leading-none uppercase">Image de soi</h3>
-                        <span class="ls4you-badge">LS4YOU</span>
-                    </div>
-                    <p class="text-xs font-bold text-gray-500 uppercase italic">Posture & Savoir-être</p>
-                    <p class="text-xs text-gray-600 mt-3 font-bold leading-tight">Identification de tes forces et préparation aux codes de l'entreprise.</p>
-                </div>
-
-                <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest border-l-4 border-greenAccent pl-2 pt-4">Phase 2 : Restitution</p>
-                <!-- Act 3 -->
-                <div class="neo-card p-4 border-l-8 border-greenAccent">
-                    <h3 class="font-header font-bold text-lg leading-none uppercase">Support final</h3>
-                    <p class="text-xs font-bold text-gray-500 mt-1 uppercase italic">Zine / Récit numérique</p>
-                    <p class="text-xs text-gray-600 mt-3 font-bold leading-tight">Assemblage des données et co-construction du livrable de ton groupe.</p>
-                </div>
-                <!-- Act 4 -->
-                <div class="neo-card p-4 border-l-8 border-yellowAccent">
-                    <h3 class="font-header font-bold text-lg leading-none uppercase">Prise de parole</h3>
-                    <p class="text-xs font-bold text-gray-500 mt-1 uppercase italic">Préparer l'oral</p>
-                    <p class="text-xs text-gray-600 mt-3 font-bold leading-tight">Structuration du message et entraînement pour la présentation publique.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION RÔLES (COMPLET) -->
-        <section id="tab-roles" class="tab-content space-y-6">
-            <h2 class="font-header font-bold text-2xl uppercase tracking-tight">Rôles de groupe</h2>
-            <div class="grid grid-cols-1 gap-4">
-                <!-- Rôle 1 -->
-                <div class="neo-card p-4 border-l-8 border-yellowAccent">
-                    <h4 class="font-black text-sm uppercase flex items-center gap-2 mb-1"><i class="fa-solid fa-camera"></i> Reporter Image</h4>
-                    <p class="text-[10px] font-bold text-gray-500 uppercase italic mb-3">Captation visuelle</p>
-                    <p class="text-xs font-bold text-gray-600 leading-tight">Ta mission : photographier les lieux, filmer des moments clés et réaliser les portraits des acteurs rencontrés.</p>
-                </div>
-                <!-- Rôle 2 -->
-                <div class="neo-card p-4 border-l-8 border-purpleAccent">
-                    <h4 class="font-black text-sm uppercase flex items-center gap-2 mb-1"><i class="fa-solid fa-microphone"></i> Reporter Parole</h4>
-                    <p class="text-[10px] font-bold text-gray-500 uppercase italic mb-3">Interviews & Citations</p>
-                    <p class="text-xs font-bold text-gray-600 leading-tight">Ta mission : mener les enquêtes métiers, poser les questions clés et noter les paroles fortes des pros.</p>
-                </div>
-                <!-- Rôle 3 -->
-                <div class="neo-card p-4 border-l-8 border-greenAccent">
-                    <h4 class="font-black text-sm uppercase flex items-center gap-2 mb-1"><i class="fa-solid fa-map"></i> Reporter Territoire</h4>
-                    <p class="text-[10px] font-bold text-gray-500 uppercase italic mb-3">Analyse locale</p>
-                    <p class="text-xs font-bold text-gray-600 leading-tight">Ta mission : observer l'environnement, repérer les ressources et noter les chiffres clés du secteur.</p>
-                </div>
-                <!-- Rôle 4 -->
-                <div class="neo-card p-4 border-l-8 border-cyanAccent">
-                    <h4 class="font-black text-sm uppercase flex items-center gap-2 mb-1"><i class="fa-solid fa-pencil"></i> Directeur Artistique</h4>
-                    <p class="text-[10px] font-bold text-gray-500 uppercase italic mb-3">Mise en page & Design</p>
-                    <p class="text-xs font-bold text-gray-600 leading-tight">Ta mission : assurer la cohérence visuelle du support final et veiller à la qualité graphique du récit.</p>
                 </div>
             </div>
         </section>
@@ -334,36 +239,18 @@
             </div>
         </section>
 
-        <!-- SECTION CONTACTS (COMPLETÉE) -->
+        <!-- SECTION CONTACTS -->
         <section id="tab-contacts" class="tab-content space-y-6">
-            <h2 class="font-header font-bold text-2xl uppercase tracking-tight">Besoin d'aide ?</h2>
+            <h2 class="font-header font-bold text-2xl uppercase tracking-tight">Vos Référents</h2>
             <p class="text-xs font-bold text-gray-500 bg-white p-3 rounded-lg border-2 border-black border-dashed leading-tight italic">
-                Note ici le numéro de tes référents pour les joindre en cas d'imprévu.
+                Voici les contacts de vos référents territoriaux pour les joindre en cas de besoin.
             </p>
             <div id="contacts-list" class="grid grid-cols-1 gap-4"></div>
         </section>
 
     </main>
 
-    <!-- MENU OVERLAY -->
-    <div id="menu-overlay" class="fixed inset-0 z-30 bg-darkBg/95 flex flex-col items-center justify-center p-8">
-        <button onclick="toggleMenu()" class="absolute top-6 right-6 text-white text-3xl active-press">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <div class="grid grid-cols-1 gap-6 w-full max-w-xs">
-            <button onclick="switchTab('activites'); toggleMenu()" class="w-full bg-ls4you text-white font-black py-4 rounded-xl border-4 border-white shadow-[4px_4px_0px_0px_white] uppercase text-sm flex items-center gap-3 justify-center">
-                <i class="fa-solid fa-rocket"></i> Activités
-            </button>
-            <button onclick="switchTab('roles'); toggleMenu()" class="w-full bg-purpleAccent text-white font-black py-4 rounded-xl border-4 border-white shadow-[4px_4px_0px_0px_white] uppercase text-sm flex items-center gap-3 justify-center">
-                <i class="fa-solid fa-users-gear"></i> Rôles Groupe
-            </button>
-            <button onclick="switchTab('contacts'); toggleMenu()" class="w-full bg-redAccent text-white font-black py-4 rounded-xl border-4 border-white shadow-[4px_4px_0px_0px_white] uppercase text-sm flex items-center gap-3 justify-center">
-                <i class="fa-solid fa-phone"></i> Contacts Aide
-            </button>
-        </div>
-    </div>
-
-    <!-- Navigation TabBar (Optimisée) -->
+    <!-- Navigation TabBar -->
     <nav class="fixed bottom-0 left-0 right-0 bg-darkBg border-t-4 border-black z-40 flex justify-around p-2 pb-6">
         <button onclick="switchTab('accueil')" id="btn-accueil" class="nav-btn flex-1 flex flex-col items-center gap-1 text-white py-2 transition-all">
             <i class="fa-solid fa-house"></i>
@@ -381,20 +268,20 @@
             <i class="fa-solid fa-edit"></i>
             <span class="uppercase tracking-tighter">Enquête</span>
         </button>
-        <button onclick="toggleMenu()" class="nav-btn flex-1 flex flex-col items-center gap-1 text-yellowAccent py-2 transition-all">
-            <i class="fa-solid fa-plus-circle"></i>
-            <span class="uppercase tracking-tighter text-yellowAccent">Plus</span>
+        <button onclick="switchTab('contacts')" id="btn-contacts" class="nav-btn flex-1 flex flex-col items-center gap-1 text-white py-2 transition-all">
+            <i class="fa-solid fa-phone"></i>
+            <span class="uppercase tracking-tighter">Contacts</span>
         </button>
     </nav>
 
     <script>
         const contactsData = [
-            { id: 'garazi', label: 'GARAZI', names: 'Marie-Andrée M.', color: 'yellowAccent', border: 'border-l-yellowAccent' },
-            { id: 'amikuze', label: 'AMIKUZE / XIBEROA', names: 'Alain I. & Patricia G.', color: 'cyanAccent', border: 'border-l-cyanAccent' },
-            { id: 'hasparren', label: 'HASPARREN / ERROBI', names: 'Mathieu B. & Amaïa A.', color: 'greenAccent', border: 'border-l-greenAccent' },
-            { id: 'sudpb', label: 'SUD PB / TRANSFRONTALIER', names: 'Amaya V.', color: 'redAccent', border: 'border-l-redAccent' },
-            { id: 'seignanx', label: 'PAYS DU SEIGNANX', names: 'Lisa D. & Cécile D.', color: 'ls4you', border: 'border-l-ls4you' },
-            { id: 'bab', label: 'CÔTE BASQUE ADOUR (BAB)', names: 'Laetitia SE', color: 'purpleAccent', border: 'border-l-purpleAccent' }
+            { id: 'xiberoa', label: 'Xiberoa - Amikuze', names: 'Alain Irigaray', phone: '06 08 48 19 39', border: 'border-l-cyanAccent' },
+            { id: 'garazi', label: 'Garazi Baigorri Iholdy', names: 'Marie-Andrée Moulia', phone: '06 08 48 36 75', border: 'border-l-yellowAccent' },
+            { id: 'sudpb', label: 'Sud Pays Basque Transfrontalier', names: 'Amaya Verneret', phone: '06 08 48 25 67', border: 'border-l-redAccent' },
+            { id: 'hasparren', label: 'Errobi, Pays d\'Hasparren', names: 'Mathieu Bistué', phone: '06 37 33 37 57', border: 'border-l-greenAccent' },
+            { id: 'bab', label: 'Côte Basque Adour', names: 'Laetitia Saint Esteben', phone: '06 08 48 37 02', border: 'border-l-purpleAccent' },
+            { id: 'seignanx', label: 'Pays du Seignanx', names: 'Lisa Dubic', phone: '06 33 77 78 38', border: 'border-l-ls4you' }
         ];
 
         function switchTab(tabId) {
@@ -406,29 +293,20 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function toggleMenu() {
-            document.getElementById('menu-overlay').classList.toggle('open');
-        }
-
         function renderContacts() {
             const container = document.getElementById('contacts-list');
-            const savedPhones = JSON.parse(localStorage.getItem('plt_phones') || '{}');
 
             container.innerHTML = contactsData.map(c => `
                 <div class="neo-card p-4 border-l-[12px] ${c.border}">
                     <p class="text-[9px] font-black uppercase text-gray-400 mb-1 leading-none tracking-wider">${c.label}</p>
-                    <h3 class="font-header font-bold text-sm leading-none uppercase">${c.names}</h3>
+                    <h3 class="font-header font-bold text-base leading-none uppercase text-darkBg">${c.names}</h3>
                     <div class="mt-3">
-                        <input type="tel" id="phone-${c.id}" value="${savedPhones[c.id] || ''}" placeholder="06..." class="neo-input" oninput="savePhone('${c.id}', this.value)">
+                        <a href="tel:${c.phone.replace(/\s/g, '')}" class="inline-flex items-center justify-center w-full bg-[#f0f2f5] text-darkBg font-black py-3 rounded-lg border-2 border-black hover:bg-gray-200 transition-colors">
+                            <i class="fa-solid fa-phone mr-2"></i> ${c.phone}
+                        </a>
                     </div>
                 </div>
             `).join('');
-        }
-
-        function savePhone(id, value) {
-            const savedPhones = JSON.parse(localStorage.getItem('plt_phones') || '{}');
-            savedPhones[id] = value;
-            localStorage.setItem('plt_phones', JSON.stringify(savedPhones));
         }
 
         window.onload = function() {
